@@ -1,0 +1,6 @@
+[submodule "export"]
+	path = export
+	url = git@github.com:cryptobib/export.git
+[submodule "cryptobib"]
+	path = cryptobib
+	url = git@github.com:cryptobib/export.git
