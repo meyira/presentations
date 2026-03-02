@@ -1,0 +1,30 @@
+\begin{pchstack}[boxed]
+  \resizebox{0.9\textwidth}{!}{
+
+  \pseudocode{
+    \<\<\\
+    \textbf{Server}\<\<\textbf{Client}\\[0.1\baselineskip][\hline]
+    \{\mathbf{k_0}, \mathbf{k_1}, \cdots, \mathbf{k_n} \}\xleftarrow{\$} \mathsf{keygen()}\<\< \text{input }
+    X\leftarrow \{x_1,
+    \cdots, x_n \},\\
+    \mathbf{r_s}\leftarrow [0]\<\<\mathbf{r_c}\leftarrow [0],E_{client}\leftarrow E_0\\
+    \text{\textbf{foreach} i $\in \{1, \ldots, n\}$:} \< \< \text{\textbf{foreach} i $\in \{1, \ldots, n\}$:} \\
+    \<\< \qquad  \mathbf{r_{c,i}}\xleftarrow{\$} \mathsf{keygen()}\\
+    \qquad \mathbf{r_{s,i}}\xleftarrow{\$} \mathsf{keygen()}\<
+    \sendmessage{<-}{top=$E_{blinded}$} \< \qquad
+    E_{blinded}\leftarrow \mathbf{r_{c,i}}*E_{client}\\
+      \qquad  E_{s,i,0}\leftarrow \mathbf{r_{s,i}}*E_{blinded}\< \< \\
+     \qquad  E_{s,i,1}\leftarrow \mathbf{k_i}*E_{s,i,0}  \<\<  \\
+     \qquad\mathbf{r_s}\leftarrow \mathbf{r_s}-\mathbf{r_{s,i}}
+  \<\sendmessage{->}{top={$E_{s,i,0}$, $E_{s,i,1}$}} \< \qquad E_{client} \leftarrow E_{s,i,x_i} \\
+     \<\<\qquad\mathbf{r_c}\leftarrow \mathbf{r_c}-\mathbf{r_{c,i}}
+    \pclb
+     \pcintertext[dotted]{Finalize and Unblind}
+     \<\sendmessage{<-}{top=$\mathbf{r_{c,0}}*E_{client}$}\< \mathbf{r_{c,0}}
+     \xleftarrow{\$} \mathsf{keygen()}\\
+     E_s\leftarrow (\mathbf{k_0}+\mathbf{r_{s}})*(\mathbf{r_{c,0}}*E_{client})  \<\sendmessage{->}{top=$E_{s}$}\<
+     E_{client}\leftarrow \left(\mathbf{r_c}-\mathbf{r_{c,0}}\right)*E_{s}\\
+     \<\< \text{\textbf{return }} E_{client}
+    }
+    }
+\end{pchstack}

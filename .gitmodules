@@ -1,0 +1,3 @@
+[submodule "cryptodays-paris-26/export"]
+	path = cryptodays-paris-26/export
+	url = git@github.com:cryptobib/export.git

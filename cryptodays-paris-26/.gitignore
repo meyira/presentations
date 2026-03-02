@@ -1,0 +1,34 @@
+IEEE-bibtex/
+IEEE-template/
+latex.out/
+_region_*
+auto/
+
+*.aux*
+*.bak
+*.bbl
+*.bcf
+*.blg
+*.cut
+*.dvi
+*.fdb_latexmk
+*.fls
+*.gz
+*.log
+*.orig
+*.out
+*.pdf
+*.run.xml
+*.synctex*
+*.tbz
+*.toc
+*.xcp
+*.zip
+
+# dblp helper local cache
+.dblp-bib.cache
+
+# Vim's swap files
+*.sw*
+
+!figures/*.pdf

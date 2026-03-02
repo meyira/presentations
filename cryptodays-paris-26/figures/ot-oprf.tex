@@ -1,0 +1,30 @@
+\begin{pchstack}[boxed]
+\resizebox{0.9\textwidth}{!}{
+  \pseudocode{
+  \text{\textbf{Server}}\<\<\text{\textbf{Client}}\\[0.1\baselineskip][\hline]
+  \text{keys }K=\mathbf{k_0},\ldots,\mathbf{k_n}\<\<\text{input } X=[x_1, \ldots,
+  x_n]\\
+  \mathbf{r}\leftarrow [0]\<\<\mathbf{k}\leftarrow [0]\\
+  \mathbf{for }~i \in [1,n]: \<\<\mathbf{for }~i\in [1,N]: \\
+  \qquad \mathbf{r_i}\xleftarrow{\$} \mathsf{keygen()}\<\<\\
+    \qquad\mathbf{r}\leftarrow \mathbf{r}+\mathbf{r_i}
+  \< 
+  {
+    \begin{bbrenv}{B}
+      \begin{bbrbox}
+        \Large{$2\choose 1$-OT}
+      \end{bbrbox}
+      \bbrqryfrom{top=$x_i$}
+     % \bbrmsgto{top=$k_i+r_i$,$r_i$}
+      \bbrmsgto{top=$\mathbf{r_i}$,bottom=$\mathbf{k_i}+\mathbf{r_i}$}
+      \bbrqryto{top=$\quad x_i\mathbf{k_i}+ \mathbf{r_i}$}
+    \end{bbrenv}
+  }
+    \<
+    \qquad\mathbf{k}\leftarrow \mathbf{k}+x_i\mathbf{k_i}+\mathbf{r_i}\\
+    E_{fin}\leftarrow (\mathbf{k_0}-\mathbf{r})*E_0
+     \<\sendmessageright*{E_{fin}}\<E\leftarrow \mathbf{k} * E_{fin}\\
+   \<\<\text{\textbf{return} } E
+    }
+}
+\end{pchstack}
