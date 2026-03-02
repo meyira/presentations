@@ -1,0 +1,157 @@
+OK, let's talk about OPRFs, how they are used, how you use them, maybe without
+recognizing you do, and how you could use them in your MPC application. This is
+joint work with Daniel E, Daniel K, Christian, Verena and Roman, all of which
+are at TACEO. 
+
+So maybe let's start with use-cases for OPRFs. Have you ever wanted to send a hash over a
+wire, for example to hide a password? 
+Or maybe you wanted to throw a party with a friend, but you agreed to only
+invite people both of you like, and want to privately solve this by intesecting
+the set of people each of you wants to invite? 
+Or maybe you want to hand out a number of tokens that can be redeemed later? 
+Or, the other way around, maybe you want to generate deterministic identifiers
+from biometric data or a password? 
+More generally, maybe you have a low-entropy input and get a high-entropy output
+ bound to the application from it. 
+
+So the good news is that if you ever had one of the use-cases, you may want to
+consider an OPRF!
+In an OPRF, a client has an input x and wants to get the PRF evaluation under
+the server's key k of x. The oblivious part of this two-party protocol is that
+the client learns nothing of the key besides the PRF evaluation of the key, and
+the server learns nothing about the input and the output. 
+
+But wait, let's quickly revisit PRFs. I previously said we can use them
+in-place when you want to send a hash over a wire. This is not entirely true,
+PRFs are defined a lot looser. We only require them to be a deterministic and
+polynomial-time function, that produces an output that is indistinguishable from
+a randomly chosen element in the output space without knowing the input and the
+key. 
+A simple way to build them is with elliptic curves; we hash the input to the
+curve, evaluate it with our secret key and output a hash of the result to remove
+the algebraic structure. 
+
+This construction is really easy to evaluate obliviously: We hash to the group
+and blind the element. This is perfectly hiding, so we send it to the server who
+evaluates it with the key, sends it back, and we unblind it by applying a group
+action with the inverse group element. 
+
+And there are many other ways to do this: you can use Naor-Reingold OPRFs, cool
+post-quantum constructions, schemes that shift some computational load to a
+data-independent preprocessing phase... but for the purpose of this talk, this
+is irrelevant. To the best of our knowledge, only this 2HashDH OPRF is deployed,
+so that is all we need ot know. 
+
+The reason for this is that is very simple. And while OPRFs have been presented
+at NISTs Multi-party threshold scheme workshop, only the IETF has completed an
+RFC for OPRFs. It also standardizes two augmentations: A verifiable OPRF that
+adds a DLOG equivalence proof that the correct key was used in the evaluation,
+and a partially verifiable OPRF where a part of the input, the tag t, is public.
+This can be used to bind additional information to the PRF like a validity
+period or some key information. 
+
+You may think this sounds a lot like a blind signature, and a while ago I would
+have agreed: they are used interchangably- RFCs using OPRFs specifies both as valid- but
+OPRFs are a lot more efficient, and we actually build them quite differentlly as
+well, so it makes sense to only focus on OPRFs. However, OPRFs are roughly
+between three and ten times more efficent than blind signatures. We can also
+amoritze the issuance step for OPRFs, so they get even cheaper.
+work with the proofs. 
+
+We identified a number of protocols that use OPRFs. We cluster them in the
+following categories: Unlinkability, mostly from PrivacyPass Tokens, protecting
+low-entropy secrets, TODO
+
+
+So let's look at the first use-case: removing the linkability between an request
+and a previous authentication. For example, in rate limiting, we want to reward
+the user for solving a CAPTCHA by giving them a set of tokens they can redeem
+later to bypass CAPTCHA challenges. PrivacyPass, which is standardized by the
+IETF, specifices exactly that. According to public statements, this reduces the
+number of CAPCHAs by a factor of 30 for companies like cloudflare, leading to a
+smoother user experience. It is also used for Media over QUIC, which would lead
+to a nicer streaming experience. Finally, there is Kagi, a search engine where users
+pay for token access- and in the background, there is also privacypass running
+with OPRFs. 
+
+Let's move on to the next use-case: deterministic high-entropy output from
+low-entropy secrets. I really like the example of inviting people to a party you
+throw together, but assuming everyone has a roughly the same number of friends a
+generic circuit does perform better. However, when the sets are mcuch larger for
+one party than the other, the party with the larger set, typically the server,
+can just publish PRF evaluations of their set, since they are pseudorandom. The
+client can then compute an OPRF with all of their set entries and compare
+against the published PRF evaluations. 
+If the output is revealed later, the server could potentially use a different
+key in the PRF session to link the session to the revealed output, which could,
+for example, link a set size to an output TODO make nicer 
+
+We found a number of applications using OPRFs for unbalanced set intersections.
+Probably the most famous one is Google linking ad views to Visa purchasing
+history to gauge ad conversion. Both Google and Microsoft use PSI ot detect
+whether passwords appeared in breaches. Cloudflare goes a step further and
+compares passwords to detect whether the credential or related credentials
+appear in a breach in their Might I Get Pwned protocol. None of the schemes use
+verifiability, but in the case of passwords, if a scheme appears later and the
+identity is known, the server could pinpoint a session to a leaked credential
+TODO. 
+
+Staying with passwords, OPRFs are used in OPAQUE and related protocols to ensure
+the keys do not leave the device. To authenticate with a password without
+revealing it, the client first registers with a password and uses the OPRF
+output to encrypt the secret part of a private/public keypair. On
+authentication, the client performs another OPRF with the server and uses the
+OPRF output to decrypt the secret key and perform an authenticated key exchange.
+This is specified in RFC 9807 and deployed in Whatsapp to avoid revealing the
+backup pin. 
+
+Finally, OPRFs are used to deterministically generate identities from
+information like social media handles or iris information. This often happens in
+a threshold setting. The protocols can be divided into two subprotocols:
+Callisto, which detects serial perpetrators of sexual misconduct, computing
+identifiers via social media handles. Second, to compute deterministic
+identifiers for blockchain wallets. That's MetaMask, Taceo and human.world. Here
+they actually go a bit further in what they use the OPRF for. So what does
+MPC-friendliness mean for OPRFs? 
+
+First of all, it means that the OPRF is a threshold function. This removes the
+collusion assumption between a server and a client- maybe the client controlls a
+part of the network. So we need a threshold OPRF where at least $m$ servers
+participate, and then we assume that at least some of them are correct. Also,
+they use something they call public verifiability, and this is where it is
+important to draw a line between publicly verifiable OPRFs and blind signatures,
+because not only do we have pseudorandomness, which is a weaker assumption than
+one-more unforgeability (todo verify, at least pseudorand. implies
+unforgeability but not vice versa). The nice thing is that generic ZKPs are
+used, so we can prove more things. For example, I could not only prove I have a
+token from the Austrian government that confirms I am a passport holder, but
+maybe they also added a proof that my age is above 18. And what we also can do
+with threshold OPRFs is that we can make them recursive verification friendly.
+This means the client only has to verify a single proof, regardless of the
+threshold that is set. 
+
+So this is neat; but usually ZK is expensive, right? In the concrete
+instantiatino, we can argue for using zk-friendly primitives. That usually means
+primitives which few constraints in zero-knowledge. Proving systems like R1CS
+need one constraint per multiplication gate, but can perform additions for free.
+So we want to use a curve and a hash-to-curve function that is cheap in
+zero-knowledge. It turns out that BabyJubJub is a good candidate because its
+base field is the same as the scalar field of the proof system. In contrast,
+e.g. the NIST-standardized  P-curves are not ZK friendly. 
+
+Let's zoom in on the recursive verification: here, one proof is generated per
+server, which is accumulated. Overall, this means we need two challenge/response
+interactions, but that is fine if the verification is more efficient. 
+
+Here is a concrete breakdown of how expensive each operation is in R1CS. So just
+over 20 thousand constraints- that is very promising, especially since we take
+less bandwidth than OPRFs. 
+
+So let's go back to OPRFs. We've seen a lot of protocols. 2HashDh may look like
+it is set in stone, but the PQ alternatives perform significantly worse. Maybe a
+PQ solution comes from MPC, and if it does, augmenting the protocols with
+additional proofs may be a cool functionality extension. In any case, MPC with
+ZK gives an efficient OPRF given that zk-friendly curves are used alongside
+zk-friendly hash functions. If you keep at that, you get constant verificaiton
+cost for the client!
+

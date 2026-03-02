@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+  <defs>
+    <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d2847;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4fc3f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0288d1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tridentGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd54f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff8f00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#64ffda;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#64ffda;stop-opacity:0" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+
+
+  <!-- Subtle circuit pattern background -->
+  <g opacity="0.4" stroke="#0d4a6b" stroke-width="1.5" fill="none">
+    <line x1="50" y1="100" x2="50" y2="600"/>
+    <line x1="150" y1="50" x2="150" y2="650"/>
+    <line x1="250" y1="80" x2="250" y2="620"/>
+    <line x1="350" y1="50" x2="350" y2="650"/>
+    <line x1="450" y1="100" x2="450" y2="600"/>
+    <line x1="550" y1="80" x2="550" y2="620"/>
+    <circle cx="150" cy="200" r="4" fill="#0d4a6b"/>
+    <circle cx="350" cy="150" r="4" fill="#0d4a6b"/>
+    <circle cx="450" cy="350" r="4" fill="#0d4a6b"/>
+    <circle cx="50" cy="400" r="4" fill="#0d4a6b"/>
+    <circle cx="550" cy="250" r="4" fill="#0d4a6b"/>
+  </g>
+
+  <!-- Floating hash symbols -->
+  <g font-family="monospace" font-size="14" fill="#0a5e8a" opacity="0.6">
+    <text x="60" y="150" transform="rotate(-15 60 150)">0x3a9f</text>
+    <text x="470" y="130" transform="rotate(10 470 130)">H(x)</text>
+    <text x="80" y="580" transform="rotate(5 80 580)">F_p</text>
+    <text x="460" y="560" transform="rotate(-8 460 560)">zk</text>
+    <text x="500" y="200" transform="rotate(12 500 200)">π</text>
+    <text x="40" y="320" transform="rotate(-10 40 320)">MDS</text>
+    <text x="510" y="420" transform="rotate(7 510 420)">S-box</text>
+  </g>
+
+  <!-- Ambient glow behind character -->
+  <ellipse cx="300" cy="360" rx="180" ry="200" fill="#0288d1" opacity="0.1" filter="url(#softGlow)"/>
+
+  <!-- BODY - Rounded friendly octopus-like shape -->
+  <!-- Tentacles -->
+  <g opacity="0.9">
+    <!-- Left tentacles -->
+    <path d="M180,440 Q140,500 120,540 Q110,560 125,565 Q140,560 150,540 Q170,490 200,450" fill="url(#bodyGrad)" opacity="0.8"/>
+    <path d="M200,460 Q170,530 160,570 Q155,590 170,590 Q185,585 190,565 Q200,520 220,465" fill="url(#bodyGrad)" opacity="0.7"/>
+    <path d="M230,470 Q210,550 210,590 Q210,610 225,605 Q240,595 240,570 Q245,530 250,475" fill="url(#bodyGrad)" opacity="0.75"/>
+
+    <!-- Right tentacles -->
+    <path d="M420,440 Q460,500 480,540 Q490,560 475,565 Q460,560 450,540 Q430,490 400,450" fill="url(#bodyGrad)" opacity="0.8"/>
+    <path d="M400,460 Q430,530 440,570 Q445,590 430,590 Q415,585 410,565 Q400,520 380,465" fill="url(#bodyGrad)" opacity="0.7"/>
+    <path d="M370,470 Q390,550 390,590 Q390,610 375,605 Q360,595 360,570 Q355,530 350,475" fill="url(#bodyGrad)" opacity="0.75"/>
+  </g>
+
+  <!-- Suction cups (tiny circles on tentacles) -->
+  <g fill="#b3e5fc" opacity="0.5">
+    <circle cx="135" cy="540" r="4"/>
+    <circle cx="145" cy="520" r="3"/>
+    <circle cx="170" cy="570" r="4"/>
+    <circle cx="180" cy="550" r="3"/>
+    <circle cx="220" cy="580" r="4"/>
+    <circle cx="225" cy="560" r="3"/>
+    <circle cx="465" cy="540" r="4"/>
+    <circle cx="455" cy="520" r="3"/>
+    <circle cx="430" cy="570" r="4"/>
+    <circle cx="420" cy="550" r="3"/>
+    <circle cx="380" cy="580" r="4"/>
+    <circle cx="375" cy="560" r="3"/>
+  </g>
+
+  <!-- Main head/body -->
+  <ellipse cx="300" cy="350" rx="140" ry="130" fill="url(#bodyGrad)"/>
+
+  <!-- Head dome (slightly larger top) -->
+  <ellipse cx="300" cy="300" rx="130" ry="110" fill="url(#bodyGrad)"/>
+
+  <!-- Body highlight -->
+  <ellipse cx="280" cy="280" rx="80" ry="60" fill="#b3e5fc" opacity="0.2"/>
+
+  <!-- Crown / Laurel (crypto-style) -->
+  <g filter="url(#glow)">
+    <path d="M200,230 Q220,190 260,200 Q280,170 300,195 Q320,170 340,200 Q380,190 400,230"
+          fill="none" stroke="#ffd54f" stroke-width="3"/>
+    <!-- Crown jewels (hash symbols) -->
+    <circle cx="260" cy="198" r="6" fill="#ffd54f"/>
+    <circle cx="300" cy="188" r="8" fill="#ff8f00"/>
+    <circle cx="340" cy="198" r="6" fill="#ffd54f"/>
+    <text x="293" y="194" font-family="monospace" font-size="11" fill="#0a1628" font-weight="bold">#</text>
+  </g>
+
+  <!-- FACE -->
+  <!-- Eyes -->
+  <g>
+    <!-- Left eye -->
+    <ellipse cx="260" cy="310" rx="25" ry="28" fill="white"/>
+    <ellipse cx="265" cy="312" rx="14" ry="16" fill="#0d2847"/>
+    <ellipse cx="270" cy="307" rx="5" ry="6" fill="white"/>
+    <!-- Right eye -->
+    <ellipse cx="340" cy="310" rx="25" ry="28" fill="white"/>
+    <ellipse cx="345" cy="312" rx="14" ry="16" fill="#0d2847"/>
+    <ellipse cx="350" cy="307" rx="5" ry="6" fill="white"/>
+  </g>
+
+  <!-- Friendly smile -->
+  <path d="M265,365 Q300,400 335,365" fill="none" stroke="#01579b" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Cheek blush -->
+  <ellipse cx="235" cy="350" rx="15" ry="10" fill="#f48fb1" opacity="0.3"/>
+  <ellipse cx="365" cy="350" rx="15" ry="10" fill="#f48fb1" opacity="0.3"/>
+
+  <!-- TRIDENT held in right tentacle -->
+  <g transform="translate(430, 300) rotate(15)">
+    <!-- Shaft -->
+    <rect x="-4" y="-80" width="8" height="200" fill="url(#tridentGrad)" rx="4"/>
+    <!-- Prongs -->
+    <path d="M0,-80 L0,-130" stroke="#ffd54f" stroke-width="6" stroke-linecap="round"/>
+    <path d="M-25,-70 L-25,-115 Q-25,-125 -20,-128" stroke="#ffd54f" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M25,-70 L25,-115 Q25,-125 20,-128" stroke="#ffd54f" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <!-- Prong tips -->
+    <circle cx="0" cy="-133" r="5" fill="#ffd54f" filter="url(#glow)"/>
+    <circle cx="-21" cy="-130" r="4" fill="#ffd54f" filter="url(#glow)"/>
+    <circle cx="21" cy="-130" r="4" fill="#ffd54f" filter="url(#glow)"/>
+    <!-- Cross guard -->
+    <rect x="-30" y="-75" width="60" height="8" fill="#ff8f00" rx="4"/>
+  </g>
+
+
+
+  <!-- Floating binary/hash data particles -->
+  <g font-family="monospace" font-size="10" fill="#0a5e8a" opacity="0.7" filter="url(#glow)">
+    <text x="100" y="250">01</text>
+    <text x="480" y="280">ff</text>
+    <text x="150" y="200">a7</text>
+    <text x="430" y="230">3b</text>
+    <text x="90" y="450">e2</text>
+    <text x="500" y="480">9c</text>
+  </g>
+
+  <!-- Bubbles -->
+  <g fill="none" stroke="#0d4a6b" stroke-width="1.5" opacity="0.5">
+    <circle cx="120" cy="280" r="8"/>
+    <circle cx="105" cy="260" r="5"/>
+    <circle cx="490" cy="300" r="7"/>
+    <circle cx="500" cy="275" r="4"/>
+    <circle cx="140" cy="240" r="3"/>
+  </g>
+
+  <!-- Title -->
+  <text x="300" y="650" text-anchor="middle" font-family="'Courier New', monospace" font-size="28" fill="#0a4a6e" font-weight="bold" filter="url(#glow)">POSEIDON HASH</text>
+  <text x="300" y="675" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#0d5a84" opacity="0.9">ZK-Friendly · Sponge Construction · Algebraic</text>
+</svg>

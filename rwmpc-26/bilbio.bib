@@ -1,0 +1,274 @@
+@misc{taceo-oprf,
+  author={Kales, Daniel and Walch, Roman},
+  title = {A Nullifier Protocol based on a Verifiable, Threshold OPRF},
+  note={\url{https://github.com/TaceoLabs/oprf-service/blob/df4de8e938222f93cd9af3a7272a84df6807e273/docs/oprf.pdf}}
+}
+
+@misc{metamask,
+   author={MetaMask documentation},
+   title={How does social login with MetaMask work?}, 
+   note={\url{https://support.metamask.io/configure/wallet/social-login/}}
+ }
+@misc{human,
+  author={human network},
+  day={14}, 
+  month={1}, 
+  year={2026}, 
+  title={Reintroducing Human Network’s vOPRF}, 
+  note={\url{https://human.tech/blog/reintroducing-human-network-s-voprf}}
+}
+@misc{kagi,
+  author       = {Kagi docs},
+  title = {How does Privacy Pass work? },
+  url          = {https://help.kagi.com/kagi/privacy/privacy-pass.html}
+}
+@misc{ietf-privacypass-protocol-04,
+  author       = {S. Celi and A. Davidson and A. Faz-Hernandez and
+   S. Valdes and C. A. Wood},
+  title        = {The Privacy Pass Protocol},
+  howpublished = {Internet Draft},
+  institution  = {IETF},
+  year         = {2022},
+  month        = {April},
+  url          = {https://www.ietf.org/archive/id/draft-ietf-privacypass-protocol-04.html}
+}
+
+@techreport{ietf-privacypass-batched-tokens-06,
+    number =    {draft-ietf-privacypass-batched-tokens-06},
+    type =      {Internet-Draft},
+    institution =   {Internet Engineering Task Force},
+    publisher = {Internet Engineering Task Force},
+    note =      {Work in Progress},
+    url =       {https://datatracker.ietf.org/doc/draft-ietf-privacypass-batched-tokens/06/},
+    author =    {Raphael Robert and Christopher A. Wood and Thibault Meunier},
+    title =     {{Batched Token Issuance Protocol}},
+    pagetotal = 78,
+    year =      2025,
+    month =     oct,
+    day =       20,
+    abstract =  {This document specifies two variants of the Privacy Pass issuance protocol that allow for batched issuance of tokens. These allow clients to request more than one token at a time and for issuers to issue more than one token at a time.},
+}
+
+@techreport{schlesinger-privacypass-act-00,
+    number =    {draft-schlesinger-privacypass-act-00},
+    type =      {Internet-Draft},
+    institution =   {Internet Engineering Task Force},
+    publisher = {Internet Engineering Task Force},
+    note =      {Work in Progress},
+    url =       {https://datatracker.ietf.org/doc/draft-schlesinger-privacypass-act/00/},
+    author =    {Samuel Schlesinger and Thibault Meunier},
+    title =     {{Privacy Pass Issuance Protocol for Anonymous Credit Tokens}},
+    pagetotal = 21,
+    year =      2025,
+    month =     oct,
+    day =       20,
+    abstract =  {This document specifies the issuance and redemption protocols for tokens based on the Anonymous Credit Tokens (ACT) protocol.},
+}
+@misc{rfc9497,
+    series =    {Request for Comments},
+    number =    9497,
+    howpublished =  {RFC 9497},
+    publisher = {RFC Editor},
+    doi =       {10.17487/RFC9497},
+    url =       {https://www.rfc-editor.org/info/rfc9497},
+    author =    {Alex Davidson and Armando Faz-Hernandez and Nick Sullivan and Christopher A. Wood},
+    title =     {{Oblivious Pseudorandom Functions (OPRFs) Using Prime-Order Groups}},
+    pagetotal = 61,
+    year =      2023,
+    month =     dec,
+    abstract =  {An Oblivious Pseudorandom Function (OPRF) is a two-party protocol between a client and a server for computing the output of a Pseudorandom Function (PRF). The server provides the PRF private key, and the client provides the PRF input. At the end of the protocol, the client learns the PRF output without learning anything about the PRF private key, and the server learns neither the PRF input nor output. An OPRF can also satisfy a notion of 'verifiability', called a VOPRF. A VOPRF ensures clients can verify that the server used a specific private key during the execution of the protocol. A VOPRF can also be partially oblivious, called a POPRF. A POPRF allows clients and servers to provide public input to the PRF computation. This document specifies an OPRF, VOPRF, and POPRF instantiated within standard prime-order groups, including elliptic curves. This document is a product of the Crypto Forum Research Group (CFRG) in the IRTF.},
+}
+
+
+@techreport{yun-privacypass-arc-02,
+    number =    {draft-yun-privacypass-arc-02},
+    type =      {Internet-Draft},
+    institution =   {Internet Engineering Task Force},
+    publisher = {Internet Engineering Task Force},
+    note =      {Work in Progress},
+    url =       {https://datatracker.ietf.org/doc/draft-yun-privacypass-arc/02/},
+    author =    {Cathie Yun and Christopher A. Wood},
+    title =     {{Privacy Pass Issuance Protocol for Anonymous Rate-Limited Credentials}},
+    pagetotal = 17,
+    year =      2025,
+    month =     oct,
+    day =       20,
+    abstract =  {This document specifies the issuance and redemption protocols for tokens based on the Anonymous Rate-Limited Credential (ARC) protocol.},
+}
+
+@inproceedings{COMPASS:RQABLV18,
+author = {Rajan, Anjana and Qin, Lucy and Archer, David W. and Boneh, Dan and Lepoint, Tancrede and Varia, Mayank},
+title = {Callisto: A Cryptographic Approach to Detecting Serial Perpetrators of Sexual Misconduct},
+year = {2018},
+isbn = {9781450358163},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3209811.3212699},
+doi = {10.1145/3209811.3212699},
+abstract = {Sexual misconduct is prevalent in workplace and education settings but stigma and risk of further damage deter many victims from seeking justice. Callisto, a non-profit that has created an online sexual assault reporting platform for college campuses, is expanding its work to combat sexual assault and harassment in other industries. In this new product, users will be invited to an online "matching escrow" that will detect repeat perpetrators and create pathways to support for victims. Users submit encrypted data about their perpetrator, and this data can only be decrypted by the Callisto Options Counselor (a lawyer), when another user enters the identity of the same perpetrator. If the perpetrator identities match, both users will be put in touch independently with the Options Counselor, who will connect them to each other (if appropriate) and help them determine their best path towards justice. The client relationships with the Options Counselors are structured so that any client-counselor communications would be privileged. A combination of client-side encryption, encrypted communication channels, oblivious pseudo-random functions, key federation, and Shamir Secret Sharing keep data confidential in transit, at rest, and during the matching process with the guarantee that only the lawyer ever has access to user submitted data, and even then only when a match is identified.},
+booktitle = {Proceedings of the 1st ACM SIGCAS Conference on Computing and Sustainable Societies},
+articleno = {49},
+numpages = {4},
+location = {Menlo Park and San Jose, CA, USA},
+series = {COMPASS '18}
+}
+
+@misc{ppccc-cloudflare,
+    author = {Valenta, Luke and Rubin, Cefan Daniel and Wood, Christopher},
+    title = {Privacy-Preserving Compromised Credential Checking},
+    year = {2021}, 
+    month = {10}, 
+    day = {14}, 
+    note = {\url{https://blog.cloudflare.com/privacy-preserving-compromised-credential-checking/}}
+}
+@misc{rfc9807,
+    series =    {Request for Comments},
+    number =    9807,
+    howpublished =  {RFC 9807},
+    publisher = {RFC Editor},
+    doi =       {10.17487/RFC9807},
+    url =       {https://www.rfc-editor.org/info/rfc9807},
+    author =    {Daniel Bourdrez and Hugo Krawczyk and Kevin Lewi and Christopher A. Wood},
+    title =     {{The OPAQUE Augmented Password-Authenticated Key Exchange (aPAKE) Protocol}},
+    pagetotal = 73,
+    year =      2025,
+    month =     jul,
+    abstract =  {This document describes the OPAQUE protocol, an Augmented (or Asymmetric) Password-Authenticated Key Exchange (aPAKE) protocol that supports mutual authentication in a client-server setting without reliance on PKI and with security against pre-computation attacks upon server compromise. In addition, the protocol provides forward secrecy and the ability to hide the password from the server, even during password registration. This document specifies the core OPAQUE protocol and one instantiation based on 3DH. This document is a product of the Crypto Forum Research Group (CFRG) in the IRTF.},
+}
+@techreport{ietf-moq-privacy-pass-auth-01,
+    number =    {draft-ietf-moq-privacy-pass-auth-01},
+    type =      {Internet-Draft},
+    institution =   {Internet Engineering Task Force},
+    publisher = {Internet Engineering Task Force},
+    note =      {Work in Progress},
+    url =       {https://datatracker.ietf.org/doc/draft-ietf-moq-privacy-pass-auth/01/},
+    author =    {Suhas Nandakumar and Cullen Fluffy Jennings and Thibault Meunier},
+    title =     {{Privacy Pass Authentication for Media over QUIC (MoQ)}},
+    pagetotal = 15,
+    year =      2025,
+    month =     oct,
+    day =       20,
+    abstract =  {This document specifies the use of Privacy Pass architecture and issuance protocols for authorization in Media over QUIC (MoQ) transport protocol. It defines how Privacy Pass tokens can be integrated with MoQ's authorization framework to provide privacy- preserving authentication for subscriptions, fetches, publications, and relay operations while supporting fine-grained access control through prefix-based track namespace and track name matching rules.},
+}
+
+@misc{iacr/GuptaG22,
+  author       = {Aayush Gupta and Kobi Gurkan},
+  title        = {An {ECDSA} Nullifier Scheme for Unique Pseudonymity within Zero Knowledge Proofs},
+  howpublished = {{IACR} Cryptology ePrint Archive, Paper 2022/1255},
+  year         = {2022},
+  url          = {https://eprint.iacr.org/2022/1255},
+  biburl       = {https://dblp.org/rec/journals/iacr/GuptaG22.bib},
+}
+
+@misc{rfc9496,
+    series =    {Request for Comments},
+    number =    9496,
+    howpublished =  {RFC 9496},
+    publisher = {RFC Editor},
+    doi =       {10.17487/RFC9496},
+    url =       {https://www.rfc-editor.org/info/rfc9496},
+    author =    {Henry de Valence and Jack Grigg and Mike Hamburg and Isis Lovecruft and George Tankersley and Filippo Valsorda},
+    title =     {{The ristretto255 and decaf448 Groups}},
+    pagetotal = 27,
+    year =      2023,
+    month =     dec,
+    abstract =  {This memo specifies two prime-order groups, ristretto255 and decaf448, suitable for safely implementing higher-level and complex cryptographic protocols. The ristretto255 group can be implemented using Curve25519, allowing existing Curve25519 implementations to be reused and extended to provide a prime-order group. Likewise, the decaf448 group can be implemented using edwards448. This document is a product of the Crypto Forum Research Group (CFRG) in the IRTF.},
+}
+
+@article{pub2000digital,
+  title={Digital signature standard (DSS)},
+  author={PUB, FIPS},
+  journal={Fips pub},
+  pages={186--192},
+  year={2000}
+}
+
+@inproceedings{JareckiL10,
+  author    = {Stanislaw Jarecki and
+               Xiaomin Liu},
+  title     = {Fast Secure Computation of Set Intersection},
+  booktitle = {{SCN}},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {6280},
+  pages     = {418--435},
+  publisher = {Springer},
+  year      = {2010}
+}
+
+@article{DBLP:journals/iacr/BloemenKSW24,
+  author  = {Remco Bloemen and
+             Bryan Gillespie and
+             Daniel Kales and
+             Philipp Sippl and
+             Roman Walch},
+  title   = {Large-Scale {MPC:} Scaling Private Iris Code Uniqueness Checks to
+             Millions of Users},
+  journal = {{IACR} Cryptol. ePrint Arch.},
+  pages   = {705},
+  year    = {2024}
+}
+@misc{whatsapp-whitepaper,
+    title = {Security of End-To-End Encrypted Backups} ,
+    note = {Version 1, \url{https://www.whatsapp.com/security/WhatsApp_Security_Encrypted_Backups_Whitepaper.pdf}}, 
+    year={2021}, 
+    month={09},
+    day={10}
+}
+
+@article{cacm/Shamir79,
+  author       = {Adi Shamir},
+  title        = {How to Share a Secret},
+  journal      = {Commun. {ACM}},
+  number       = {11},
+  volume       = {22},
+  pages        = {612--613},
+  year         = {1979},
+  doi          = {10.1145/359168.359176},
+  biburl       = {https://dblp.org/rec/journals/cacm/Shamir79.bib},
+}
+
+@inproceedings{crypto/ChaumP92,
+  author       = {David Chaum and Torben Pryds Pedersen},
+  title        = {Wallet Databases with Observers},
+  booktitle    = {{CRYPTO} '92},
+  xeditor      = {Ernest F. Brickell},
+  series       = {LNCS},
+  volume       = {740},
+  pages        = {89--105},
+  publisher    = {Springer},
+  year         = {1992},
+  doi          = {10.1007/3-540-48071-4_7},
+  biburl       = {https://dblp.org/rec/conf/crypto/ChaumP92.bib},
+}
+@misc{microsoft-ccc,
+    year = {2021},
+    month = {1}, 
+    day = {21},
+    author = {Lauter, Kristin and Kannepalli, Sreekanth and Laine, Kim and Cruz Moreno, Radames},
+    title = {Password Monitor: Safeguarding passwords in Microsoft Edge},
+    note = {https://www.microsoft.com/en-us/research/blog/password-monitor-safeguarding-passwords-in-microsoft-edge/},
+}
+
+@misc{rfc9578,
+    series =    {Request for Comments},
+    number =    9578,
+    howpublished =  {RFC 9578},
+    publisher = {RFC Editor},
+    doi =       {10.17487/RFC9578},
+    url =       {https://www.rfc-editor.org/info/rfc9578},
+    author =    {Sofia Celi and Alex Davidson and Steven Valdez and Christopher A. Wood},
+    title =     {{Privacy Pass Issuance Protocols}},
+    pagetotal = 36,
+    year =      2024,
+    month =     jun,
+    abstract =  {This document specifies two variants of the two-message issuance protocol for Privacy Pass tokens: one that produces tokens that are privately verifiable using the Issuer Private Key and one that produces tokens that are publicly verifiable using the Issuer Public Key. Instances of "issuance protocol" and "issuance protocols" in the text of this document are used interchangeably to refer to the two variants of the Privacy Pass issuance protocol.},
+}
+@misc{cloudflare-ratelimiting,
+    author = {Meunier, Thibault and Patton, Christopher and Heimberger, Lena and Faz-Hernández, Armando},
+    title={Anonymous credentials: rate-limiting bots and agents without compromising privacy},
+    year =      2025,
+    month =     oct,
+    day={31},
+    note = {https://blog.cloudflare.com/private-rate-limiting/},
+}
+
