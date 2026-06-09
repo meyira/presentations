@@ -1,0 +1,119 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: leap-qscan-26.aux
+The style file: alpha.bst
+Database file #1: bilbio.bib
+Database file #2: export/crypto.bib
+Warning--string name "asiaccs24ed" is undefined
+--line 105177 of file export/crypto.bib
+Warning--string name "asiaccs24name" is undefined
+--line 105178 of file export/crypto.bib
+Warning--string name "asiaccs24addr" is undefined
+--line 105179 of file export/crypto.bib
+Warning--string name "asiaccs24month" is undefined
+--line 105180 of file export/crypto.bib
+Warning--string name "asiaccspub" is undefined
+--line 105181 of file export/crypto.bib
+Warning--string name "crypto99ed" is undefined
+--line 209868 of file export/crypto.bib
+Warning--string name "crypto99name" is undefined
+--line 209869 of file export/crypto.bib
+Warning--string name "crypto99vol" is undefined
+--line 209870 of file export/crypto.bib
+Warning--string name "cryptoaddr" is undefined
+--line 209871 of file export/crypto.bib
+Warning--string name "crypto99month" is undefined
+--line 209872 of file export/crypto.bib
+Warning--string name "crypto99pub" is undefined
+--line 209873 of file export/crypto.bib
+Warning--string name "mylncs" is undefined
+--line 209874 of file export/crypto.bib
+Warning--string name "crypto84ed" is undefined
+--line 219865 of file export/crypto.bib
+Warning--string name "crypto84name" is undefined
+--line 219866 of file export/crypto.bib
+Warning--string name "crypto84vol" is undefined
+--line 219867 of file export/crypto.bib
+Warning--string name "cryptoaddr" is undefined
+--line 219868 of file export/crypto.bib
+Warning--string name "crypto84month" is undefined
+--line 219869 of file export/crypto.bib
+Warning--string name "crypto84pub" is undefined
+--line 219870 of file export/crypto.bib
+Warning--string name "mylncs" is undefined
+--line 219871 of file export/crypto.bib
+Warning--string name "eurocrypt25ed" is undefined
+--line 267859 of file export/crypto.bib
+Warning--string name "eurocrypt25name7" is undefined
+--line 267860 of file export/crypto.bib
+Warning--string name "eurocrypt25vol7" is undefined
+--line 267861 of file export/crypto.bib
+Warning--string name "eurocrypt25addr" is undefined
+--line 267862 of file export/crypto.bib
+Warning--string name "eurocrypt25month" is undefined
+--line 267863 of file export/crypto.bib
+Warning--string name "eurocrypt25pub" is undefined
+--line 267864 of file export/crypto.bib
+Warning--string name "mylncs" is undefined
+--line 267865 of file export/crypto.bib
+Warning--string name "usenix19ed" is undefined
+--line 880530 of file export/crypto.bib
+Warning--string name "usenix19name" is undefined
+--line 880531 of file export/crypto.bib
+Warning--string name "usenix19addr" is undefined
+--line 880532 of file export/crypto.bib
+Warning--string name "usenix19month" is undefined
+--line 880533 of file export/crypto.bib
+Warning--string name "usenixpub" is undefined
+--line 880534 of file export/crypto.bib
+Database file #3: export/abbrev3.bib
+Reallocated str_pool (elt_size=1) to 130000 items from 65000.
+Reallocated str_pool (elt_size=1) to 195000 items from 130000.
+Reallocated str_pool (elt_size=1) to 260000 items from 195000.
+Warning--empty booktitle in C:GolGolMic84
+Warning--empty booktitle in C:Gilboa99
+Warning--empty booktitle in ASIACCS:HHMRR24
+Warning--empty booktitle in EC:HKLMRR25
+Warning--empty booktitle in USENIX:KRSSW19
+You've used 7 entries,
+            2543 wiz_defined-function locations,
+            16781 strings with 198911 characters,
+and the built_in function-call counts, 3697 in all, are:
+= -- 364
+> -- 187
+< -- 5
++ -- 67
+- -- 67
+* -- 268
+:= -- 579
+add.period$ -- 21
+call.type$ -- 7
+change.case$ -- 53
+chr.to.int$ -- 7
+cite$ -- 12
+duplicate$ -- 147
+empty$ -- 261
+format.name$ -- 72
+if$ -- 772
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 7
+newline$ -- 39
+num.names$ -- 21
+pop$ -- 64
+preamble$ -- 1
+purify$ -- 60
+quote$ -- 0
+skip$ -- 133
+stack$ -- 0
+substring$ -- 235
+swap$ -- 45
+text.length$ -- 5
+text.prefix$ -- 1
+top$ -- 0
+type$ -- 56
+warning$ -- 5
+while$ -- 36
+width$ -- 11
+write$ -- 88
+(There were 36 warnings)

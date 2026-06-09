@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{2 Protocols to start the 2-party computation}{2}{0}{1}
+\beamer@sectionintoc {2}{Beyond Simple Arithmetic}{13}{0}{2}
+\beamer@sectionintoc {3}{How is this useful? }{21}{0}{3}
