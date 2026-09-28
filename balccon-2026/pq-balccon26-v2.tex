@@ -8,7 +8,7 @@
 %  Needs metropolis, tikzpeople, pgfplots, soul, booktabs.
 %  XeLaTeX or LuaLaTeX if you want metropolis' Fira fonts.
 % =====================================================================
-\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=169,hanodut]{beamer}
 
 \usetheme[progressbar=frametitle,numbering=fraction,block=fill]{metropolis}
 
@@ -1047,8 +1047,9 @@
        {no oil times oil: fix the vinegar and the rest is \emph{linear}};
      \begin{scope}[shift={(8.4,0.4)}]
        \fill[good!50,draw=good] (0,1.5) rectangle (0.25,1.9);
-       \node[anchor=west] at (0.4,1.7) {signature: 96 bytes};
+       \node[anchor=west] at (0.4,1.7) {sig: 96 bytes};
        \fill[bad!45,draw=bad] (0,0.3) rectangle (3.4,0.7);
+       \node[anchor=west] at (0.4,0.9) {pk: 10s kBs};
      \end{scope}
    \end{tikzpicture}
    \vspace{2mm}
@@ -1061,7 +1062,7 @@
       vinegar, still standing
     \item<4-> Shrinking the public key with more
       structure is risky \\ \pause
-    \cgrey{Breaking Rainbow Takes a Weekend on a Laptop, Ward Beullens,  \url{ia.cr/2022/214}}
+    \cgrey{\footnotesize Breaking Rainbow Takes a Weekend on a Laptop, Ward Beullens,  \url{ia.cr/2022/214}}
   \end{itemize}
 \end{frame}
 
@@ -1206,6 +1207,7 @@
     \node[bad,anchor=north,align=center,text width=4cm] at (2.4,-0.7)
       {ML-DSA-65: 3309 bytes, every connection};
 
+    \uncover<2->{
     \draw[grey!45,dashed] (5.6,-1.5) -- (5.6,2.7);
 
     \node[grey,font=\footnotesize\bfseries] at (9.4,2.5) {KEMTLS};
@@ -1222,22 +1224,19 @@
     \draw[-{Stealth},good,line width=1.1pt] (7.6,-0.2) -- (11.2,-0.2)
       node[midway,above,font=\tiny,good]{second ciphertext};
     \node[good,anchor=north,align=center,text width=4.4cm] at (9.4,-0.7)
-      {only the server that can decrypt it can continue};
+      {only continue if the server that can decrypt};
+  }
   \end{tikzpicture}
   \vspace{1mm}
-  \begin{itemize}\footnotesize
-    \item<2-> The handshake signature disappears. Proving you can
-      decrypt is proof enough, and ML-KEM is smaller than any
-      post-quantum signature.
-    \item<3-> Price: authentication is \alert{implicit} at first, and
-      the server's first data waits one extra flight.
-    \item<4-> \cgrey{The CA still signs your certificate. KEMTLS
-      removes the one signature made live; Merkle tree certificates
-      remove the four made in advance.}
+  \begin{itemize}
+    \item<3-> No handshake signature, decryption is proof of private key possession.
+    \item<4-> \alert{implicit} authentication, one extra round.
+    \item<5-> \cgrey{The CA still signs your certificate. }KEMTLS
+      removes the one signature, MTCs      remove the four made in advance.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{The escape hatch nobody wants: symmetric all the way down}
+\begin{frame}{Down the symmetric rabbithole}
   \centering
   \begin{tikzpicture}[font=\scriptsize,x=1cm,y=1cm,
       b/.style={rounded corners=3pt,inner sep=5pt,minimum width=16mm,
@@ -1313,7 +1312,7 @@
           {the Deployer}{The ethical stage: committing to an algorithm}
 
 
-          \begin{frame}{The whole menu}
+          \begin{frame}{Start where you are}
   \centering\footnotesize
   \begin{tabular}{@{}l l l@{}}
     \toprule
@@ -1329,10 +1328,10 @@
   \end{tabular}
   \vspace{3mm}
   \begin{itemize}
-    \item<2-> That is the list. Six things, two of which nobody ships
-      yet.
+    \item<2-> That's it. 
     \item<3-> Everything else is either research
-      prototype or in standardization process
+      prototype or in standardization process. 
+    \item<4->  \alert{You go to war with the algorithms you have, not the ones you wish you had. } \\ \cgrey{\url{https://educatedguesswork.org/posts/pq-emergency/}, Eric Rescola}
   \end{itemize}
 \end{frame}
 
@@ -1346,7 +1345,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{``But it is bigger''}
+\begin{frame}{But it is bigger}
   \centering
   \begin{tikzpicture}[font=\scriptsize,x=1cm,y=1cm]
     \node[grey,anchor=south] at (2.4,2.5) {bytes on the wire};
@@ -1361,7 +1360,7 @@
     \fill[bad!45,draw=bad] (6.6,1.6) rectangle (9.4,2.0);
     \node[anchor=west,font=\tiny] at (9.6,1.8) {X25519};
     \fill[good!50,draw=good] (6.6,0.8) rectangle (8.0,1.2);
-    \node[anchor=west,font=\tiny] at (8.2,1.0) {ML-KEM-768: faster};
+    \node[anchor=west,font=\tiny] at (8.2,1.0) {ML-KEM-768};
   \end{tikzpicture}
   \vspace{3mm}
   \begin{itemize}
@@ -1448,17 +1447,13 @@
       \fill[\col!65,rounded corners=2pt] (0,\y-0.22) rectangle (0.07*\val,\y+0.22);
       \node[anchor=west,\col] at (7.2,\y) {\val\,\%};}
     \node[grey,anchor=west,font=\footnotesize\bfseries] at (-4.6,-0.7) {not started};
-    \node[anchor=west,bad,align=left] at (-3.2,-1.3)
-      {\textbf{0} public post-quantum certificates in the Web PKI};
-    \node[anchor=west,grey,align=left] at (-3.2,-1.8)
+    \node[anchor=west,grey,align=left] at (-3.2,-1.3)
       {FN-DSA still draft \ \ $\cdot$ \ \ hybrid certificate format still
        unsettled \ \ $\cdot$ \ \ Merkle tree certificates in testing};
   \end{tikzpicture}
-  \vspace{1mm}
-  \begin{itemize}\footnotesize
-    \item<2-> Encryption is nearly done. It took ten years, most middleboxes, not mathematics.
-    \item<3-> \alert{Authentication has not started.} Not one
-      publicly trusted certificate uses a post-quantum signature.
+  \begin{itemize}\small
+    \item<2-> Encryption is nearly done, took ten years, most middleboxes.
+    \item<3-> \alert{Authentication is experimental.} 
     \item<4-> \cgrey{Cloudflare and Tranco scans, mid-2026.}
   \end{itemize}
 \end{frame}
@@ -1515,7 +1510,7 @@
           % ---------------------------------------------------------------------
           \begin{frame}{When does a useful quantum computer arrive?}
             \begin{itemize}
-              \item Estimates run from the early 2030s to the mid-2040s.
+              \item Estimates from the early 2030s to the mid-2040s \pause
               \item A lot of arguments: Hybrids, key sizes, which curve to keep\pause
               \item Transition is as soon as 2029 (Google, Cloudflare)
             \end{itemize}
@@ -1552,37 +1547,36 @@
       \onslide<2->{It used structure the other lattices do not have.}
     \item<3-> \cgood{A quantum algorithm claimed the dihedral coset
       problem in polynomial time.} \\
-      \onslide<4->{It ended up strengthening lattices: the conjecture is
+      \onslide<4->{ ended up strengthening lattices: conjecture 
       that whole families of quantum lattice attacks may never gain more
       than a polynomial factor.}
-    \item<5-> \cbad{Classic McEliece got a distinguisher}, which became
-      a quasi-polynomial key recovery. Nobody has run it, much like
-      RSA-1024.
+    \item<5-> \cbad{Distinguisher Classic McEliece}, became
+      a quasi-polynomial key recovery.
   \end{itemize}
   \vfill
 \end{frame}
 
           % ---------------------------------------------------------------------
-          \begin{frame}{Building to break}
-            \centering
-            \begin{tikzpicture}[every node/.style={minimum size=1.5cm},font=\small]
-              \node[alice,shirt=rose,hair=brown,label=below:{knows $x$}] (a) at (0,0) {};
-              \node[builder,shirt=good,label=below:{knows $k$}] (s) at (6,0) {};
-              \draw[-{Stealth},acc,thick] (1.5,0.35) -- (4.5,0.35)
-                node[midway,above,font=\scriptsize]{blinded $x$};
-              \draw[{Stealth}-,acc,thick] (1.5,-0.35) -- (4.5,-0.35)
-                node[midway,below,font=\scriptsize]{blinded $F_k(x)$};
-            \end{tikzpicture}
-            \vfill
-            \begin{itemize}
-              \item She learns $F_k(x)$. He learns nothing. Neither learns the
-                other's secret.
-              \item ``Is my password in this breach?'' without saying the
-                password. Private contact discovery. Anonymous tokens.
-              \item As an instrument: the smallest protocol that  shows
-                whether a primitive is \alert{flexible}.
-            \end{itemize}
-          \end{frame}
+  %         \begin{frame}{Building to break}
+  %           \centering
+  %           \begin{tikzpicture}[every node/.style={minimum size=1.5cm},font=\small]
+  %             \node[alice,shirt=rose,hair=brown,label=below:{knows $x$}] (a) at (0,0) {};
+  %             \node[builder,shirt=good,label=below:{knows $k$}] (s) at (6,0) {};
+  %             \draw[-{Stealth},acc,thick] (1.5,0.35) -- (4.5,0.35)
+  %               node[midway,above,font=\scriptsize]{blinded $x$};
+  %             \draw[{Stealth}-,acc,thick] (1.5,-0.35) -- (4.5,-0.35)
+  %               node[midway,below,font=\scriptsize]{blinded $F_k(x)$};
+  %           \end{tikzpicture}
+  %           \vfill
+  %           \begin{itemize}
+  %             \item She learns $F_k(x)$. He learns nothing. Neither learns the
+  %               other's secret.
+  %             \item ``Is my password in this breach?'' without saying the
+  %               password. Private contact discovery. Anonymous tokens.
+  %             \item As an instrument: the smallest protocol that  shows
+  %               whether a primitive is \alert{flexible}.
+  %           \end{itemize}
+  %         \end{frame}
 
     %       % ---------------------------------------------------------------------
     %       \begin{frame}{The property I keep wanting and cannot have}
@@ -1604,7 +1598,7 @@
     %         \end{itemize}
     %       \end{frame}
 
-              \begin{frame}{What now? }
+              \begin{frame}{The great human error is to reason in place of finding out.}
   \centering
   \begin{tikzpicture}[every node/.style={minimum size=1.5cm}]
     \node[chef,female,shirt=ink,details=rose,hat=ink,hair=acc] at (0,0) {};
@@ -1615,22 +1609,19 @@
   \vspace{4mm}
 
   \begin{minipage}{0.86\textwidth}
-    \onslide<2->{\large We choose without knowing, which Kierkegaard
-      said is the only kind of choosing there is.\par}
+    \onslide<2->{\large We choose without knowing, may be the only kind of choosing there is.\par}
     \vspace{3mm}
-    \onslide<3->{\large \cacc{I am afraid we will lose privacy on the
-      way}, because the tools that protect it are the ones that do not
-      survive the move.\par}
+    \onslide<3->{\large \cacc{I am afraid we will lose privacy.} 
+      The protocols are young, and we odn't know how to port all. \par}
     \vspace{3mm}
-    \onslide<4->{\large And still: the mathematics is beautiful, we get
-      to open systems nobody has opened in thirty years, and almost
-      none of it is decided yet.\par}
+    \onslide<4->{\large Math is beautiful, we get
+      to open systems nobody has opened in thirty years, and not everything is decided.\par}
   \end{minipage}
 \end{frame}
 
 \begin{frame}[standout]
   Stop being sad.\\[5mm]
-  {\normalsize Break something. On a laptop. Over a weekend.}
+  {\normalsize Break something. On a laptop. Over a weekend. \\ \pause Or fix something. }
 \end{frame}
 
 \begin{frame}{References}
